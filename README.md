@@ -1,5 +1,3 @@
-# Reconfy
-
 <h1 align="center">
   <img src="static/reconfy-logo.png" alt="reconfy" width="200px"></a>
   <br>
