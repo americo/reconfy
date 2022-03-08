@@ -1,8 +1,20 @@
 # Reconfy
 
-Fast and customizable reconnaissance workflow tool based on simple YAML based DSL, with support of notifications and distributed workload of that workflow easily.
+<h1 align="center">
+  <img src="static/reconfy-logo.png" alt="reconfy" width="200px"></a>
+  <br>
+</h1>
+<p>Fast and customizable reconnaissance workflow tool based on simple YAML based DSL, with support of notifications and distributed workload of that workflow easily.</p>
+
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Install</a> •
+  <a href="#usage">Usage</a> •
+</p>
 
 ## Features
+
+<img src="static/reconfy-run.png" alt="reconfy"></a>
 
 - Automated reconnaissance workflow
 - Discord notification
@@ -52,7 +64,6 @@ steps:
   - name: command 2
     run: |
       bash command
-
 ```
 
 2. Run the workflow
@@ -61,7 +72,7 @@ steps:
 reconfy -workflow workflow.yaml -config config.yaml -name your_project_name
 ```
 
-## Help
+### Help
 
 ```sh
 reconfy -h
