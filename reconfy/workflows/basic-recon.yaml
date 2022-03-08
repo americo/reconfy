@@ -1,0 +1,16 @@
+id: basic-recon
+
+info:
+  author: americo
+  name: Basic recon
+
+steps:
+  - name: Passive subdomain enumeration with subfinder
+    run: |
+      subfinder -dL domains.txt -silent -o passive_subdomains.txt
+  # - name: Passive subdomain enumeration with subfinder
+  #   run: |
+  #     subfinder -dL {domains} -silent -o {outputDir}/passive_subdomains.txt
+  # - name: Passive subdomain enumeration with subfinder
+  #   run: |
+  #     subfinder -dL {domains} -silent -o {outputDir}/passive_subdomains.txt
