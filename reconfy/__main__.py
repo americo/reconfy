@@ -7,7 +7,7 @@ from huepy import *
 from yaml.loader import SafeLoader
 from datetime import date
 
-from core.notify import discord
+from discord_webhook import DiscordWebhook
 
 # Defines the pareser
 parser = argparse.ArgumentParser()
@@ -65,6 +65,12 @@ def get_config(config_file=None):
         #     data = yaml.load(config_file, Loader=SafeLoader)
 
     return data
+
+
+def discord(webhook_url, content):
+    webhook = DiscordWebhook(url=webhook_url, content=content)
+    response = webhook.execute()
+    return response
 
 
 def notificate(config_data, content):
