@@ -30,11 +30,3 @@ def create_droplet(number, token):
 
 def delete_droplet():
     pass
-
-
-def main():
-    create_droplet("1", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-
-
-if __name__ == "__main__":
-    main()
