@@ -18,7 +18,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    install_requires=["pyyaml", "huepy", "discord-webhook"],
+    install_requires=["pyyaml", "huepy", "discord-webhook", "python-digitalocean"],
     python_requires=">=3.5",
     entry_points={
         "console_scripts": ["reconfy=src.__main__:main"],
