@@ -1,2 +1,3 @@
 src/*.txt
-src/core__pycache__
+src/core/_pycache__
+__pycache__

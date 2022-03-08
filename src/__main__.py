@@ -26,6 +26,11 @@ parser.add_argument(
     action="store_true",
 )
 parser.add_argument("-name", help="Project name.", dest="project_name", required=True)
+parser.add_argument(
+    "-droplets",
+    help="Digital ocean droplets number.",
+    dest="droplets_number",
+)
 parser.add_argument("-silent", help="Silent mode.", dest="silent", action="store_true")
 # Arguments to be parsed
 args = parser.parse_args()
@@ -99,15 +104,26 @@ def run_workflow(workflow, config_data):
         except:
             pass
 
-        # Run the command
-        process = subprocess.Popen(
-            command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
-        )
-        process.wait()
+        if args.droplets_number:
+            # Run the command
+            process = subprocess.Popen(
+                command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
+            )
+            process.wait()
 
-        # Send notification if notify is enabled
-        notify_content = "[step-done] " + step["name"]
-        notificate(config_data, notify_content)
+            # Send notification if notify is enabled
+            notify_content = "[step-done] " + step["name"]
+            notificate(config_data, notify_content)
+        else:
+            # Run the command
+            process = subprocess.Popen(
+                command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
+            )
+            process.wait()
+
+            # Send notification if notify is enabled
+            notify_content = "[step-done] " + step["name"]
+            notificate(config_data, notify_content)
 
     # Notifacate the end of the workflow running
     notificate(
