@@ -1,8 +1,6 @@
-from itertools import count
-import os
+import subprocess
 import argparse
 import yaml
-import time
 from huepy import *
 
 from yaml.loader import SafeLoader
@@ -23,7 +21,9 @@ def banner():
  ___ ___ ___ ___ ___|  _|_ _ 
 |  _| -_|  _| . |   |  _| | |
 |_| |___|___|___|_|_|_| |_  |
-                        |___|"""
+                        |___|   v1.0.0                        
+    americojunior.com
+    """
     return ban
 
 
@@ -46,13 +46,17 @@ def run_workflow(workflow):
 
     # Run steps
     for step in steps:
+        # Get command from steps
         command = step["run"]
-        print(command)
-        os.system(command)
+        # Run the command
+        process = subprocess.Popen(
+            command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
+        )
+        process.wait()
 
 
 def main():
-    print(banner())
+    print(cyan(banner()))
     run_workflow(args.workflow)
 
 

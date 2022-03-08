@@ -7,7 +7,7 @@ info:
 steps:
   - name: Passive subdomain enumeration with subfinder
     run: |
-      subfinder -dL domains.txt -silent -o passive_subdomains.txt
+      subfinder -dL domains.txt -o passive_subdomains.txt -silent
   # - name: Passive subdomain enumeration with subfinder
   #   run: |
   #     subfinder -dL {domains} -silent -o {outputDir}/passive_subdomains.txt
