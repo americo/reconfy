@@ -18,7 +18,7 @@
 
 - Automated reconnaissance workflow
 - Discord notification
-- Workflow's distributed workload with digital ocean droplets
+- Workflow's distributed workload with digital ocean droplets (TO-DO)
 
 ## Installation
 
