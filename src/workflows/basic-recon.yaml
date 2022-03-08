@@ -8,9 +8,6 @@ steps:
   - name: Passive subdomain enumeration with subfinder
     run: |
       subfinder -dL domains.txt -o passive_subdomains.txt -silent
-  # - name: Passive subdomain enumeration with subfinder
-  #   run: |
-  #     subfinder -dL {domains} -silent -o {outputDir}/passive_subdomains.txt
-  # - name: Passive subdomain enumeration with subfinder
-  #   run: |
-  #     subfinder -dL {domains} -silent -o {outputDir}/passive_subdomains.txt
+  - name: Subdomain probe with dnsx
+    run: |
+      dnsx -l passive_subdomains.txt -o active_subdomains.txt -silent
