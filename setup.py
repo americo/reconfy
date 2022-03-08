@@ -21,7 +21,7 @@ setuptools.setup(
     install_requires=["pyyaml", "huepy", "discord-webhook", "python-digitalocean"],
     python_requires=">=3.5",
     entry_points={
-        "console_scripts": ["reconfy=src.__main__:main"],
+        "console_scripts": ["reconfy=reconfy.__main__:main"],
     },
     keywords=["reconfy", "bug bounty", "recon", "automation", "pentesting", "security"],
 )
