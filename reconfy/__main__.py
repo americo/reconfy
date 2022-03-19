@@ -20,6 +20,9 @@ parser.add_argument(
     "-config", help="Configuration file.", dest="config_file", required=True
 )
 parser.add_argument(
+    "-url", help="Target for recon, will be replaced by the value of '$1'"
+)
+parser.add_argument(
     "-notify",
     help="Enable discord notification for steps (Setup your config file first.)",
     dest="notify",
@@ -43,6 +46,7 @@ def banner():
 |_| |___|___|___|_|_|_| |_  |
                         |___|   v1.0.0                        
     americojunior.com
+    modified by ferreira
     """
     return ban
 
@@ -104,7 +108,6 @@ def run_workflow(workflow, config_data):
         print(f"[{orange(data['id'])}] {step['name']}")
         # Get command from steps
         command = step["run"]
-
         try:
             notify = step["notify"]
         except:
@@ -112,6 +115,9 @@ def run_workflow(workflow, config_data):
 
         if args.droplets_number:
             # Run the command
+            if args.url:
+                command = command.replace("$1", args.url)
+
             process = subprocess.Popen(
                 command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
             )
@@ -122,14 +128,18 @@ def run_workflow(workflow, config_data):
             notificate(config_data, notify_content)
         else:
             # Run the command
+            #print(command)
+            if args.url:
+                command = command.replace("$1", args.url)
+            #print(command)
             process = subprocess.Popen(
                 command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT
             )
             process.wait()
 
             # Send notification if notify is enabled
-            notify_content = "[step-done] " + step["name"]
-            notificate(config_data, notify_content)
+            #notify_content = "[step-done] " + step["name"]
+            #notificate(config_data, notify_content)
 
     # Notifacate the end of the workflow running
     notificate(
