@@ -70,6 +70,30 @@ steps:
 reconfy -workflow workflow.yaml -config config.yaml -name your_project_name
 ```
 
+### 3. In order to run your script with specified target, you must use $1 inside workflow and set -target flag:
+
+Example of usage:
+
+```yaml
+id: workflow-name
+
+info:
+  author: author-name
+  name: Workflow name
+
+steps:
+  - name: command 1
+    run: |
+      echo $1 | gau >> gauoutput.txt
+```
+
+Now run the workflow
+
+```sh
+reconfy -workflow workflow.yaml -config config.yaml -name your_project_name -target target.com
+```
+Look now the script will be replaced by `echo target.com | gau >> gauoutput.txt`
+
 ### Help
 
 ```sh
@@ -79,7 +103,7 @@ reconfy -h
 This will display help for the tool. Here are all the switches it supports.
 
 ```sh
-usage: reconfy [-h] -workflow WORKFLOW -config CONFIG_FILE [-notify] -name PROJECT_NAME [-droplets DROPLETS_NUMBER] [-silent]
+usage: reconfy [-h] -workflow WORKFLOW -config CONFIG_FILE [-notify] -name PROJECT_NAME [-droplets DROPLETS_NUMBER] [-silent] [-target TARGET]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -90,4 +114,5 @@ optional arguments:
   -droplets DROPLETS_NUMBER
                         Digital ocean droplets number.
   -silent               Silent mode
+  -target               Target, see README.
 ```
